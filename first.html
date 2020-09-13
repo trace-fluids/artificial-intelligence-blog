@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> artificial intelligence blog</title>
+</head>
+<body>
+  <header>
+    <h1> artificial intelligence blog</h1>
+  </header>
+
+  
+
+<h2> Hello, Universe. </h2>
+<small> Published on Friday, 11 September, 2020 </small>
+<br>
+<p>My name is Jack Adam Collins. I am a software engineer from London with a background in physics and philosophy.</p>
+
+<p>This blog will document my endless fascination with **artificial intelligence and machine learning systems**. Posts will come in the form of programming tutorials, explorations of theory and relevant mathematics, some occassional philosophical pursuits, as well as book reviews and cultural commentary.</p>
+
+<h5>Background</h5>
+
+<p>As a field, artificial intelligence has a long lineage littered with surprising developments. Early on, many theorists believed that solving particular problems (such as playing a game of chess) would lead to the discovery of human-level intelligence in algorithmic form. In reality, however, the solution to problem-solving tasks like chess turned out not to be as general as theorists had envisioned.</p>
+
+<p>In more recent times, some techniques that have been developed over a number of decades have started to reach fruition, in particular, deep learning has been remarkably successful in a broad variety of problems. The difference with deep learning, as opposed to hard-coded algorithms for each individual problem, is that the code architecture is flexible enough to alter itself into dealing with a much wider range of problems derived from the data fed into it. This method has been incredibly productive in problems such as pattern recognition, speech recognitions, machine translation and recognising objects within images. Pursuits don't simply operate within the field of productivity however, new techniques have allowed us to see what it might mean for machines to be creative and to experience the  universe too.</p>
+
+<p>It wouldn't feel like much of an introduction without sharing at least a few lines of computer code. In my day job I deliver code in Java but at university, and in my own personal projects, I use Python which is a great language for building deep learning models from scratch. With that in mind, let's build our first predictive neural-net. This will be the most simple net we can possibly make, it will take only one __input__ value, multiply this input by a __weight__ and then output a __prediction__ for us. Of course, a net this simple won't generate any really startling predictions for us to analyse - it will however, provide a good way to understand some important terminology and methods.</p>
+
+<p>We can start by unpacking some of the bold terms above: </p>
+
+<ul>
+<li><strong>Input</strong>: input data is typically some real-world information that we have recorded. This could be football scores, stock prices, today's temperature, etc. These are normally pretty simple, knowable things.</li>
+<li><strong>Weight</strong>: The weight maps the input value to our output value. It is part of the 'hidden layer' of the net, and simply acts as a parameter - an input comes in, gets multiplied by the weight value and then passes on the output value to either another weight or the output. In the case of our simple neural-net, it will result in an output for us to observe.</li>
+<li><strong>Prediction</strong>: The prediction is the output of the neural-net. It simply tells you that, given the input data, this will be the output data. We could say, "given the temperature it is 0% likely that people will be wearing coats today". Or, "given the score of the last match, it is 45% likely that your team will win the game".</li>
+</ul>
+<p>The neural-net learns through trial and error. It simply predicts, outputs a guess, and then adjusts the weight based on whether the guess was too high or too low. The end goal is that the prediction increases in accuracy next time it receives the same input. For those familiar with matrices or vectors in mathematics, you can see that the process involved is remarkably simple. So let's put this into code: </p>
+
+<pre><code># # # Basic neural net for predictions from a single input
+
+weight = 0.1
+average_goals_scored = [7.5, 15.8, 10, 9]
+input = average_goals_scored[0]
+
+def neural_network(input, weight):
+    prediction = input * weight
+    return prediction
+
+
+pred = neural_network(input, weight)
+print(pred)
+</code></pre>
+<p>As you can see, our first neural-net wasn't so complicated. We've simply declared a weight and assigned it a value, generated an array of numeric values (in this case the number of goals scored by four different players, then we've set as our input the first value from the array (that is, 7.5). We then have a user-defined function with two parameters in the constructor (input and weight). This function simply multiplies the input by the weight value and returns us the prediction. In this case, the prediction will be 0.75 or 75% Our algorithm predicts that the player has a 75% chance of scoring a goal. Now it may well be that this prediction is wildly wrong. In fact, I'd say it definitely is wildly wrong at this stage. So how does the neural-net learn? It learns through trial and error. It simply predicts, outputs a guess, and then adjusts the weight based on whether the guess was too high or too low. The end goal is that the prediction increases in accuracy next time it receives the same input. For those familiar with matrices or vectors in mathematics (weight is essentially your gradient, from linear algebra), you can see that the process involved is pretty simple.</p>
+
+<p><a href="https://flic.kr/p/2jFPdmD"><img alt="Schema for our simple neural network" src="firstNeuralNet.jpg" title="Simple Neural Net Schema" /></a></p>
+
+
+
+</body>
+</html>
