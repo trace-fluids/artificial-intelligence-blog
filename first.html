@@ -36,9 +36,9 @@
 <ul>
 <li><strong>Input</strong>: input data is typically some real-world information that we have recorded. This could be football scores, stock prices, today's temperature, etc. These are normally pretty simple, knowable things.</li>
 <li><strong>Weight</strong>: The weight maps the input value to our output value. It is part of the 'hidden layer' of the net, and simply acts as a parameter - an input comes in, gets multiplied by the weight value and then passes on the output value to either another weight or the output. In the case of our simple neural-net, it will result in an output for us to observe.</li>
-<li><strong>Prediction</strong>: The prediction is the output of the neural-net. It simply tells you that, given the input data, this will be the output data. We could say, "given the temperature it is 0% likely that people will be wearing coats today". Or, "given the score of the last match, it is 45% likely that your team will win the game".</li>
+<li><strong>Prediction</strong>: The prediction is the output of the neural-net. It simply tells you that, 'given the input data, this will be the output data'. We could say, "given the temperature it is 0% likely that people will be wearing coats today". Or, "given the score of the last match, it is 45% likely that your team will win the game".</li>
 </ul>
-<p>The neural-net learns through trial and error. It simply predicts, outputs a guess, and then adjusts the weight based on whether the guess was too high or too low. The end goal is that the prediction increases in accuracy next time it receives the same input. For those familiar with matrices or vectors in mathematics, you can see that the process involved is remarkably simple. So let's put this into code: </p>
+<p>The neural-net learns through trial and error. It simply predicts, outputs a guess, and then adjusts the weight based on whether the guess was too high or too low. The end goal is that the prediction increases in accuracy next time it receives the same input (how exactly it 'learns' this will be something we look at in the future!). For those familiar with matrices or vectors in mathematics, you can see that the process involved is remarkably simple. So let's put this into code: </p>
 
 <pre><code># # # Basic neural net for predictions from a single input
 
