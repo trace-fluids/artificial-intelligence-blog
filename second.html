@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Æ: artificial intelligence blog</title>
+</head>
+<body style="background-color:royalblue;">
+  <header>
+    <h1> Æ: artificial intelligence</h1>
+  </header>
+
+  
+
+<h2> Casting the Net Wider - Multi-input predictions. </h2>
+<small> Published on Tuesday, 15 September, 2020 </small>
+<br>
+<h4>Weighted Sum from Multiple Inputs</h4>
+
+<p>In my previous post, we looked at the mechanism at play in the simplest neural-net possible. It took a single input, multiplied it by a given weight value and then gave us an output which we used as a prediction. Looking at the output however, we quickly realised that the prediction that the net gave us was probably not the most accurate estimation. So how can we expand on this?</p>
+
+<p>We can carry on expanding on our code by feeding the neural-net a bit more information than simply one input at a time. Perhaps rather than just using one set of data -- in our original case we used 'average_goals_scored' -- we could also include other data points like 'number_of_wins', and all the other points you might think as important in predicting whether a team might win a game or not. We can start thinking about how we might apply this to Python. Although we will be inputting more data this time, we still only want to achieve a single output to interpret as our prediction. So, this time, if we were to take three data inputs, we will also need to assign three different weights by which to multiply and, finally, sum those calculations into a singular '<strong>weighted sum</strong>'. Let's build it: </p>
+
+<pre><code># # # Basic neural net for predictions from multiple inputs
+
+# Weights and data
+weights = [0.1, 0.2, 0]
+average_goals_scored = [7.5, 15.8, 10, 9]
+win_loss_record = [0.65, 0.8, 0.8, 0.9]
+num_fans_attend = [1.2, 1.3, 0.5, 1.0]
+
+input = [average_goals_scored[0], win_loss_record[0], num_fans_attend[0]]
+
+# Simple NN function
+def neural_network(input, weights):
+    pred = weighted_sum(input, weights)
+    return pred
+
+
+# Function to perform a weighted sum of inputs
+def weighted_sum(a, b):
+    assert(len(a) == len(b))
+    output = 0
+    for i in range(len(a)):
+        output += (a[i] * b[i])
+    return output
+
+
+pred = neural_network(input, weights)
+print(pred)
+</code></pre>
+
+<h4>Analysis</h4>
+
+<p>It's quite clear that the central mechanism at play from our first code hasn't really changed in the newly expanded one written above. The only new property here is that we are multiplying <strong>vectors</strong> rather than individual numbers. You might also refer to vectors as a type of one-dimensional array or, in kind of pragmatic terms instead, as simply a list of numbers. Looking back at our code, 'weights' is a vector, 'inputs' is a vector, as are our input data like 'average_goals_scored'. You might remember performing <strong>dot product</strong> calculations at school. This is exactly what the code is doing. Two vectors, equal in length, are multiplied by one another based on position in the vector: the first position of input is multiplied by the first position of the weights, the second input is in turn multiplied by the second weight, and so on, before finally summing the results.</p>
+
+<p>The importance of the dot product is that it can provide us with a quick logic to understanding what's going on inside the black box that is our neural-net. All we need is a little basic logic which, if we're familiar with Python, then we should be pretty comfortable with already. We can start by considering two vectors: </p>
+
+<pre><code>
+vector_a = [1, 0, 1, 0]
+vector_b = [0, 1, 0, 1]
+</code></pre>
+
+<p>You could imagine some code written to analyse whether vector_a[0] <strong>AND</strong> vector_b[0] both contained a value, iterating across each position. For each of the positions the AND check would fail because at no position do both vectors contain a value; there is always a zero-value somewhere in each position. Let's see what happens when we do the same process with vectors that do pass the logical AND at some index: </p>
+
+<pre><code>
+vector_c = [0, 1, 0, 1]
+vector_d = [1, 1, 1, 0]
+</code></pre>
+
+<p>In this case, at the first index (remembering that we start counting from the 'zero-th' index), both <strong>vector_c[1]</strong> and <strong>vector_d[1]</strong> have a value. This column will then mean that our output value would be 1. Following the logic, we can interpret a value set as a negative integer as a kind of <strong>NOT</strong> operator - and multiplying a negative integer by another negative integer will return a double negative. It isn't too necessary to dwell on this so much at this point, but the point I want to make clear is that, viewing the vector mathematics in this way can help you interpret the way in which the neural-net works - especially handy as the networks we deal with factor up in complexity.</p>
+
+<p>Simply put, we can use some of the logic above and some simple maths to draw our attention to the fact that the weights in our net will have varying degrees of sensitivity given their value and likeness to their input. In our Python code up above, notice that one of the weights is set to 0, so that the num_fans_attended input is essentially ignored, while the <strong>combination</strong> of the average_goals_scored with it's respective weight generates the largest number (and therefore the bulk of our prediction). Negative weights, in contrast, would serve to <strong>reduce</strong> the output number.</p>
+
+<h4>Prefer to use NumPy</h4>
+
+<p>We can re-write our simple multi-input net using the NumPy library instead. It's an excellent tool kit, perfect for performing dot product calculations:</p>
+
+<pre><code>
+import numpy as np
+
+weights = np.array([0.1, 0.2, 0])
+
+def neural_network(input, weights):
+    pred = input.dot(weights)
+    return pred
+
+average_goals_scored = np.array([7.5, 15.8, 10, 9])
+win_loss_record = np.array([0.65, 0.8, 0.8, 0.9])
+num_fans_attend = np.array([1.2, 1.3, 0.5, 1.0])
+
+input = np.array([average_goals_scored[0], win_loss_record[0], num_fans_attend[0]])
+pred = neural_network(input, weights)
+print(pred)
+</code></pre>
+
+<p>Both nets print out the same prediction 0.88 or 88% chance of winning the game. However, using NumPy, we no longer need to write a function to perform the weighted sum because NumPy has the rather helpful 'dot' function ready for us to use. Next, we can start to add an additional level of complexity in our output layer, by generating multiple predictions from a given input.</p>
+
+<h4>Schema</h4>
+
+<p><img src="SimpleNeuralNet.jpeg" alt="Schema for our multi-input neural network" width="300" height="200"> </p>
+
+
+
+</body>
+</html>
