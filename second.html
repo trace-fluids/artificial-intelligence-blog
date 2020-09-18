@@ -24,7 +24,8 @@
 
 <p>We can carry on expanding on our code by feeding the neural-net a bit more information than simply one input at a time. Perhaps rather than just using one set of data -- in our original case we used 'average_goals_scored' -- we could also include other data points like 'number_of_wins', and all the other points you might think as important in predicting whether a team might win a game or not. We can start thinking about how we might apply this to Python. Although we will be inputting more data this time, we still only want to achieve a single output to interpret as our prediction. So, this time, if we were to take three data inputs, we will also need to assign three different weights by which to multiply and, finally, sum those calculations into a singular '<strong>weighted sum</strong>'. Let's build it: </p>
 
-<pre><code># # # Basic neural net for predictions from multiple inputs
+<pre><code># # # Basic neural net 
+# # for predictions from multiple inputs
 
 # Weights and data
 weights = [0.1, 0.2, 0]
