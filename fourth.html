@@ -52,7 +52,7 @@ they would be here.
 
 <p>I'll start in a Jupyter notebook and use SymPy and some basic Latex to output a nice looking version of the Drake Equation and have a better look at what the program will be handling: </p>
 
-<p><img src="DrakeEquation.jpg" alt="The Drake Equation for Analysis" width="300" height="200"></p>
+<p><img src="pictures/DrakeEquation.jpg" alt="The Drake Equation for Analysis"></p>
 <ul>
 <li>N represents the number of civilisations in our galaxy whose electromagnetic emissions are able to be detected;</li>
 <li>R<sup>*</sup>, the average rate of star creation per year in our galaxy;</li>
@@ -107,7 +107,8 @@ plt.show()
 
 <p>And the output: </p>
 
-<p><img src="ProbabilityOfDetection.png" alt="Probability of Detection Graph" width="300" height="200"></p>
+<p><img src="pictures/ProbabilityOfDetection.png" alt="Probability of Detection Graph" width="300" height="200"></p>
+  
 <p>As you can see, a ratio of 0.5, as an example, means that there will be half as many civilisations as there are available radio-bubble equivalent volumes, a ratio of 2 means there are twice as many civilisations as volumes, etc. The y-axis illustrates the probability that an equivalent volume contains greater than one civilisation. The cool thing about the graph is that, just from a quick glance, we can see that it takes a lot of civilisations to ensure that they will all have a 'neighbour'. You could well imagine that 999,999 from 1,000,000 equivalent volumes contains at the very least two civilisations. Using your new simulacrum-God-powers, you decide to randomly distribute one new advanced civilisation. The odds that the new civilisation will end up in the remaining volume with the single occupant are one in a million. That last space is your needle in a haystack.</p>
 
 <h4>Coding the Probability of Detection</h4>
@@ -157,6 +158,7 @@ plt.show()
 </code></pre>
 
 <p>As you can see, NumPy comes in handy to perform some relatively straight-forward polynomial regression on the calculations output from the prediction. The graph plots the calculated results (seen as dots) versus the results predicted by the polynomial (as the line). </p>
+<p><img src="pictures/CalcResults.png" alt="Calculated results" width="300" height="200"></p>
 
 <h4>Graphical Model of the Galactic Disc</h4>
 
@@ -269,9 +271,9 @@ def main():
 
 <h4>Output</h4>
 
-<p><img src="SimpleNeuralNet.jpeg" alt="Schema for our multi-input neural network" width="300" height="200">
-<img src="SimpleNeuralNet.jpeg" alt="Schema for our multi-input neural network" width="300" height="200">
-<img src="SimpleNeuralNet.jpeg" alt="Schema for our multi-input neural network" width="300" height="200"></p>
+<p><img src="pictures/MilkyWaySimulation.JPG" alt="225 ly Simulation" width="300" height="200">
+<img src="pictures/MilkyWaySimulation500.JPG" alt="500 ly Simulation" width="300" height="200">
+<img src="pictures/MilkyWaySimulation20.JPG" alt="20 ly Simulation" width="300" height="200"></p>
 <p>You'll notice that using 'fuzz' helps create a more realistic galaxy. Had I not added this <i>def</i>, our spiral logarithm would simply output some swirly lines. The final output gives us a model with a central black hole. You can see that, despite the fact that our radio bubble at a scale of 225 ly is barely the size of a full-stop, if civilisations had a detection range of 112.5 ly, and if there were as many of these civilisations as current high-end predictions suggest, then the probability of detection is 1. That's it. 1.</p>
 
 <h4>Conclusion</h4>
